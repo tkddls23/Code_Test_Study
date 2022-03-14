@@ -2,6 +2,7 @@
 def solution(x):
     return x if x < 2 else solution(x-1) + solution(x-2)
 
+
 # 반복적 방법 O(n)
 
 
@@ -22,7 +23,7 @@ def solution(x):
     memo = [0 for i in range(x+1)]
 
     if x < 2:
-        return x
+        return x  # trivial case
     else:
         if memo[x] > 0:
             return memo[x]

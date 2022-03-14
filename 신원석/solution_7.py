@@ -21,7 +21,8 @@ class LinkedList:
         return curr
 
     def traverse(self):
-        curr, List = self.head, []
+        curr = self.head
+        List = []
 
         if self.nodeCount == 0:
             return List

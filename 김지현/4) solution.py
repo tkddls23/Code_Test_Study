@@ -5,7 +5,9 @@ def solution(x):
         return solution(x-2) + solution(x-1)
 
 
-
+'''
+이전의 피보나치 수열 값들을 리스트에 기록하여, 다음 수열 값을 구함
+'''
 def solution(x):
     index = 0
     numbers = []

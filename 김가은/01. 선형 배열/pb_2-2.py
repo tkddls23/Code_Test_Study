@@ -53,7 +53,7 @@ def solution(L, x):
     idx = -1 # 슬라이싱 시작점 초기화
 
     while 1:
-        if idx >= len(L) - 1: # 오버플로우 방지
+        if idx >= len(L) - 1: # IndexError 방지
             break
         
         if x in L[idx+1:]: # 마지막으로 x를 발견한 인덱스 이후부터 슬라이싱

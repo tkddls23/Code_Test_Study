@@ -57,7 +57,7 @@ def solution(L, x):
             break
         
         if x in L[idx+1:]: # 마지막으로 x를 발견한 인덱스 이후부터 슬라이싱
-            idx = (idx + 1) + L[idx+1:].index(x) # (idx + 1)을 더해 전체 L에서의 인덱스값을 저장
+            idx = L.index(x, idx+1) # index() 2번째 인자 : 리스트 탐색 시작 인덱스, idx 값을 계속 갱신
             answer.append(idx)
         else:
             break
@@ -67,7 +67,7 @@ def solution(L, x):
 
     return answer
 
-# L = [64,72,83,72,54]
+# L = [64,72,83,72,54,72]
 # x = 72
 
 # print(solution(L, x))

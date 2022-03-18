@@ -1,4 +1,4 @@
-## 4강 Recursive Algorithms2 (재귀 알고리즘 응용)
+## 5강 Recursive Algorithms2 (재귀 알고리즘 응용)
 
 - 조합의 수 계산  
     -> math 라이브러리에서 factorial 함수 호출 가능

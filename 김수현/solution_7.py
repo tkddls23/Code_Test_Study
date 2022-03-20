@@ -21,11 +21,13 @@ class LinkedList:
 
     def traverse(self):
         array, curr = [], self.head
-        while curr.next is not None:
+        while curr is not None:
             array.append(curr.data)
             curr = curr.next
 
         return array
+
+    # curr을 self.head로 두고, curr가 존재하는 동안 curr=curr.next 하면서 빈 배열에 curr.data 추가
 
 
 # 이 solution 함수는 그대로 두어야 합니다.

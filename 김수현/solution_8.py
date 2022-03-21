@@ -49,26 +49,68 @@ class LinkedList:
         return True
 
 
+    # def popAt(self, pos):
+    #     if pos < 1 or pos > self.nodeCount:
+    #         raise IndexError
+
+    #     if pos == 1:
+    #         curr = self.head
+    #         self.head = self.head.next
+    #         if self.nodeCount == 1:
+    #             self.head = None
+    #             self.tail = None
+    #     else:
+    #         prev = self.getAt(pos-1)
+    #         curr = prev.next
+    #         prev.next = curr.next
+    #         if pos == self.nodeCount:
+    #             self.tail = prev
+        
+    #     self.nodeCount -= 1
+    #     return curr.data
+
     def popAt(self, pos):
         if pos < 1 or pos > self.nodeCount:
-            raise IndexError
+            raise IndexError        
 
         if pos == 1:
-            curr, self.head = self.head, curr.next
+            curr = self.head
+            self.head = self.head.next
             if self.nodeCount == 1:
-                self.tail = None
+                self.tail = self.head
+                
         else:
-            prev = self.getAt(pos-1)
-            curr, prev.next = prev.next, curr.next
-            if pos == self.nodeCount:
-                self.tail = prev
-        
+            prev = self.getAt(pos - 1)
+            curr = prev.next
+            prev.next = curr.next
+
+        if pos != 1 and pos == self.nodeCount:
+            self.tail = prev
+            
         self.nodeCount -= 1
-        return True
+        return curr.data
 
-    # pos가 1일 때, curr을 self.head로 하고 self.head를 curr.next로 함(이때, 만약 리스트길이가 1이면 self.tail값 None으로)
-    # 그 외, prev를 pos-1의 노드로 하고, curr은 prev.next, prev.next는 curr.next로 함(이때, 만약 pos가 마지막요소라면 self.tail값 prev로)
+    # def popAt(self, pos):
+    #     if pos < 1 or pos > self.nodeCount:
+    #         raise IndexError
 
+    #     prev = self.getAt(pos-1)
+    #     curr = self.getAt(pos)
+
+    #     if self.nodeCount == 1:
+    #         self.head = None
+    #         self.tail = None
+    #     else:
+    #         if pos == 1:
+    #             self.head = curr.next
+    #         elif pos == self.nodeCount:
+    #             self.tail = prev
+    #             prev.next = None
+    #         else:
+    #             prev.next = curr.next
+
+    #     self.nodeCount -= 1
+    #     return curr.data
 
     def traverse(self):
         result = []

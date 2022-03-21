@@ -87,3 +87,6 @@ class LinkedList:
 
 def solution(x):
     return 0
+
+
+##아 커밋메세지 잘못씀

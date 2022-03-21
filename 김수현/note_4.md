@@ -1,4 +1,4 @@
-## 4강 Recursive Algorithms1 (재귀 알고리즘 기초1)
+## 4강 Recursive Algorithms1 (재귀 알고리즘 기초)
 
 - 재귀 함수(recursive functions): 하나의 함수에서 자신을 다시 호출하여 작업 수행  
 

@@ -11,27 +11,23 @@
 # 탐색
 
 - 선형 탐색(Linear search): 순차적, O(n)
-- 이진 탐색(Binary search): 대상 리스트가 이미 정렬되어 있을 때 중간값 이용, O(log n)
+- 이진 탐색(Binary search):
+
+대상 리스트가 이미 정렬되어 있을 때 중간값을 이용하여 탐색 범위를 줄여나감, O(log n)
 
 ```python
 lower = 0
 upper = len(L) - 1
 index = -1
 
-while upper - lower > 1:
+while upper >= lower:
     middle = (lower + upper) // 2
 
     if L[middle] == target:
         index = middle
         break
     elif L[middle] < target:
-        lower = middle
+        lower = middle + 1
     else:
-        upper = middle
-
-if upper - lower == 1:
-    if L[upper] == target:
-        index = upper
-    elif L[lower] == target:
-        index = lower
+        upper = middle - 1
 ```

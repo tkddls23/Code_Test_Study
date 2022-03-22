@@ -39,7 +39,7 @@ class LinkedList:
             if pos == self.nodeCount + 1:
                 prev = self.tail
             else:
-                prev = self.getAt(pos - 1)
+                prev = self.getAt(pos - 1)      ## getAt() 시간복잡도: O(n)
             newNode.next = prev.next
             prev.next = newNode
 
@@ -61,7 +61,7 @@ class LinkedList:
                 self.tail = self.head
                 
         else:  # 2 <= pos <= self.nodeCount
-            prev = self.getAt(pos - 1)
+            prev = self.getAt(pos - 1)      ## getAt() 시간복잡도: O(n)
             delNode = prev.next
             prev.next = delNode.next
 

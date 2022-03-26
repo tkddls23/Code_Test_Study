@@ -25,12 +25,10 @@
 ### Operations
 
 - 원소 삽입/삭제: `.head` or `.tail` 변경, `.next` 연결, `.nodeCount`변경
-
   - 삽입
     - 맨 앞 삽입: O(1)
     - 중간 삽입: O(n)
     - 맨 끝 삽입: O(1)
-
   ```python
   def insertAt(self, pos, newNode): # 1 <= pos <= nodeCount + 1
           if pos < 1 or pos > self.nodeCount + 1:
@@ -54,12 +52,10 @@
           self.nodeCount += 1
           return True
   ```
-
   - 삭제
     - 맨 앞 삭제: O(1)
     - 중간 삭제: O(n)
     - 맨 끝 삭제: O(n)
-
   ```python
   def popAt(self, pos):
       if pos < 1 or pos > self.nodeCount:
@@ -81,10 +77,8 @@
       self.nodeCount -= 1
       return curr.data
   ```
-
-- 길이 getter
+- 길이 getter: `.nodeCount`
 - k번째의 원소 참조
-
   ```python
   def getAt(self, pos):
       if pos <= 0 or pos > self.nodeCount:
@@ -98,15 +92,26 @@
 
       return curr # pos번째 node
   ```
-
 - 리스트 순회
-- 두 리스트 연결
+  ```python
+  def traverse(self):
+      data = []
 
+      curr = self.head
+      while curr:
+          data.append(curr.data)
+          curr = curr.next
+
+      return data
+  ```
+- 두 리스트 연결
   ```python
   def concat(self, L):
       self.tail.next = L.head
-      if L.tail:
+      if L.tail: # if L is not empty
           self.tail = L.tail
 
       self.nodeCount += L.nodeCount
   ```
+
+[자료구조 3 - 추상 자료형(Abstract Data Type)](https://jinkpark.tistory.com/77)

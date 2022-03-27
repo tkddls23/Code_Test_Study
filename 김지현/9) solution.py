@@ -1,6 +1,6 @@
 def popAfter(self, prev):
-    if prev == self.tail: # popAt에서 호출 시에는 always skip
-        return None
+    # if prev == self.tail: # popAt에서 호출 시에는 always skip
+    #     return None
 
     curr = prev.next
     nextNode = curr.next

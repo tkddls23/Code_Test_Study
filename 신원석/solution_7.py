@@ -21,14 +21,14 @@ class LinkedList:
         return curr
 
     def traverse(self):
-        curr = self.head
+        curr = self.head  # 현재위치를 head로 맞춤
         List = []
 
-        if self.nodeCount == 0:
+        if self.nodeCount == 0:  # list가 비어있는 경우
             return List
-        else:
+        else:  # list안에 하나라도 들어있는 경우
             List.append(curr.data)
-            while True:
+            while True:  # curr이 tail에 도착할때까지 반복
                 curr = curr.next
                 List.append(curr.data)
                 if curr == self.tail:

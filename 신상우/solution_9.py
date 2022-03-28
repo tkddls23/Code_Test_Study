@@ -1,5 +1,7 @@
-class Node:
+#문제 9-1
 
+class Node:
+    
     def __init__(self, item):
         self.data = item
         self.next = None
@@ -13,6 +15,7 @@ class LinkedList:
         self.tail = None
         self.head.next = self.tail
 
+
     def traverse(self):
         result = []
         curr = self.head
@@ -20,6 +23,7 @@ class LinkedList:
             curr = curr.next
             result.append(curr.data)
         return result
+
 
     def getAt(self, pos):
         if pos < 0 or pos > self.nodeCount:
@@ -33,6 +37,7 @@ class LinkedList:
 
         return curr
 
+
     def insertAfter(self, prev, newNode):
         newNode.next = prev.next
         if prev.next is None:
@@ -40,6 +45,7 @@ class LinkedList:
         prev.next = newNode
         self.nodeCount += 1
         return True
+
 
     def insertAt(self, pos, newNode):
         if pos < 1 or pos > self.nodeCount + 1:
@@ -51,20 +57,27 @@ class LinkedList:
             prev = self.getAt(pos - 1)
         return self.insertAfter(prev, newNode)
 
+
     def popAfter(self, prev):
-        curr = prev.next
-        prev.next = curr.next
-        if curr == self.tail:  # 삭제하려는 data가 tail일때
+        if prev.next == self.tail:
             self.tail = prev
+        
+        pop = prev.next
+        prev.next = pop.next
         self.nodeCount -= 1
-        return curr.data
+        return pop.data
+        
 
+    
     def popAt(self, pos):
-        if pos < 1 or pos > self.nodeCount:  # 범위지정
+        if pos < 1 or pos > self.nodeCount:
             raise IndexError
-        prev = self.getAt(pos-1)
-        return self.popAfter(prev)
 
+        else:
+            prev = self.getAt(pos -1)
+
+        return self.popAfter(prev)
 
 def solution(x):
     return 0
+

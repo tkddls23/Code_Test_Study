@@ -7,26 +7,41 @@
 
 # Big-O notation
 
-- 알고리즘의 성능(complexity)을 수학적으로 표현
-- 어떤 함수의 증가 양상을 다른 함수와의 비교로 표현 → 입력의 크기에 따라 실행 시간이 얼마나 증가하는가
+- 알고리즘의 성능(complexity)을 상한선을 기준으로 수학적으로 표현 - 기본 연산의 횟수
+
+[빅오 표기법 (big-O notation) 이란](https://noahlogs.tistory.com/27)
+
+<br>
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5d419191-b29d-48c4-b02a-1dc80d8b87ee/Untitled.png)
+
+### O(1)
+
+- 상수 시간 알고리즘
+- 입력의 크기에 관계 없이 일정한 시간 소요
+- `.append(element)`, `.pop()`, `list[i]`
 
 ### O(n)
 
 - 선형 시간 알고리즘
 - 입력의 크기에 비례하는 시간 소요
-- ex) `max()`: average case = worst case = O(n)
+- ex) for문, `max(list)`: average case = worst case = O(n), linear search
 
 ### O(log n)
 
 - 로그 시간 알고리즘
   - 입력의 크기의 log에 비례하는 시간 소요
-    - 한번 처리할 때마다 검색할 데이터 양이 절반씩 감소
+    - 한번 처리할 때마다 데이터 양이 절반씩 감소
 - ex) Binary search
 
 ### O(n^2)
 
 - 2차 시간 알고리즘
-- ex) Insertion sort(삽입 정렬): best case = O(n), worst case = O(n^2)
+- ex) 이중 for문, Insertion sort(삽입 정렬): best case = Ω(n), worst case = O(n^2)
+
   - cf) Merge sort(병합 정렬): O(nlog n) → better
-    - 데이터를 반씩 나눔 - log(n)
-    - 두 묶음씩 정렬해 나가며 정렬된 묶음들을 서로 합침 - n
+
+    - 데이터를 반씩 나눔
+    - 두 묶음끼리 정렬하며 서로 합치는 과정을 반복
+
+    [합병정렬(Merge Sort)](https://ratsgo.github.io/data%20structure&algorithm/2017/10/03/mergesort/)

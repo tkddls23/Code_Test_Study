@@ -1,13 +1,16 @@
 def solution(L, x, l, u):
-    if l > u:
+    if l>u:
         return -1
 
     mid = (l + u) // 2
 
     if x == L[mid]:
         return mid
+    
     elif x < L[mid]:
-        return solution(L, x, l, mid-1)
+        u=mid-1
+        return solution(L, x, l, u)
 
     else:
-        return solution(L, x, mid+1, u)
+        l=mid+1
+        return solution(L, x, l, u)

@@ -40,7 +40,7 @@ def splitTokens(exprStr):
     return tokens
 
 
-def infixToPostfix(tokenList): # 중위 -> 후위 표현식
+def infixToPostfix(tokenList): # 중위 -> 후위 표기법
     prec = {
         '*': 3,
         '/': 3,
@@ -75,7 +75,7 @@ def infixToPostfix(tokenList): # 중위 -> 후위 표현식
     return postfixList
 
 
-def postfixEval(tokenList): # 후위 표현식 계산
+def postfixEval(tokenList): # 후위 표기 수식 계산
     opStack = ArrayStack()
 
     for t in tokenList:

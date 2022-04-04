@@ -89,7 +89,7 @@ def postfixEval(tokenList): #연산
     answer=0
     
     for j in tokenList:
-        if j.isalpha(): #피연산자는 push
+        if j.isalpha(): #피연산자는 push , isalpha 때문임 이거 고치면 돼
             opStack.push(j)
             
         #연산자는 앞에 두 개 pop, 계산하고 push 

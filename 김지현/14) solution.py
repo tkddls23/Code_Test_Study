@@ -10,7 +10,7 @@ class LinkedListQueue:
 
     def enqueue(self, item):
         node = Node(item)
-        self.data.insertAt(self.data.getLength()+1, node)
+        self.data.insertAt(self.size()+1, node)
 
     def dequeue(self):
         return self.data.popAt(1)

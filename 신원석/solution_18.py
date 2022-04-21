@@ -98,6 +98,7 @@ class BinaryTree:
 def solution(x):
     return 0
 
+
 # 18-3
 
 class Node:

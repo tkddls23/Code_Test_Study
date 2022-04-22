@@ -40,8 +40,3 @@ class MaxHeap:
 
 def solution(x):
     return 0
-
-
-heap = MaxHeap()
-heap.data = [3, 1, 2]
-print(heap.remove())

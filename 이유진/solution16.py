@@ -1,294 +1,130 @@
 * solution.py *
 
-class Node:
-
-    def __init__(self, item):
-        self.data = item
-        self.prev = None
-        self.next = None
-
-
-class DoublyLinkedList:
+class ArrayStack:
 
     def __init__(self):
-        self.nodeCount = 0
-        self.head = Node(None)
-        self.tail = Node(None)
-        self.head.prev = None
-        self.head.next = self.tail
-        self.tail.prev = self.head
-        self.tail.next = None
-
-
-    def __repr__(self):
-        if self.nodeCount == 0:
-            return 'LinkedList: empty'
-
-        s = ''
-        curr = self.head
-        while curr.next.next:
-            curr = curr.next
-            s += repr(curr.data)
-            if curr.next.next is not None:
-                s += ' -> '
-        return s
-
-
-    def getLength(self):
-        return self.nodeCount
-
-
-    def traverse(self):
-        result = []
-        curr = self.head
-        while curr.next.next:
-            curr = curr.next
-            result.append(curr.data)
-        return result
-
-
-    def reverse(self):
-        result = []
-        curr = self.tail
-        while curr.prev.prev:
-            curr = curr.prev
-            result.append(curr.data)
-        return result
-
-
-    def getAt(self, pos):
-        if pos < 0 or pos > self.nodeCount:
-            return None
-
-        if pos > self.nodeCount // 2:
-            i = 0
-            curr = self.tail
-            while i < self.nodeCount - pos + 1:
-                curr = curr.prev
-                i += 1
-        else:
-            i = 0
-            curr = self.head
-            while i < pos:
-                curr = curr.next
-                i += 1
-
-        return curr
-
-
-    def insertAfter(self, prev, newNode):
-        next = prev.next
-        newNode.prev = prev
-        newNode.next = next
-        prev.next = newNode
-        next.prev = newNode
-        self.nodeCount += 1
-        return True
-
-
-    def insertAt(self, pos, newNode):
-        if pos < 1 or pos > self.nodeCount + 1:
-            return False
-
-        prev = self.getAt(pos - 1)
-        return self.insertAfter(prev, newNode)
-
-
-    def popAfter(self, prev):
-        curr = prev.next
-        next = curr.next
-        prev.next = next
-        next.prev = prev
-        self.nodeCount -= 1
-        return curr.data
-
-
-    def popAt(self, pos):
-        if pos < 1 or pos > self.nodeCount:
-            return None
-
-        prev = self.getAt(pos - 1)
-        return self.popAfter(prev)
-
-
-    def concat(self, L):
-        self.tail.prev.next = L.head.next
-        L.head.next.prev = self.tail.prev
-        self.tail = L.tail
-
-        self.nodeCount += L.nodeCount
-
-
-class PriorityQueue:
-
-    def __init__(self):
-        self.queue = DoublyLinkedList()
-
+        self.data = []
 
     def size(self):
-        return self.queue.getLength()
+        return len(self.data)
 
     def isEmpty(self):
         return self.size() == 0
 
-    def enqueue(self, x):
-        newNode = Node(x)
-        curr = self.queue.head #어디서부터 시작
-        
-        while curr.next.data != None and curr.next.data < x: #끝을 만나지 않고 우선순위를 만족할때까지
-            curr = curr.next
-        self.queue.insertAfter(curr, newNode) #어느위치에 삽입
+    def push(self, item):
+        self.data.append(item)
 
-
-###재시도
-
-* solution.py *
-
-class Node:
-
-    def __init__(self, item):
-        self.data = item
-        self.prev = None
-        self.next = None
-
-
-class DoublyLinkedList:
-
-    def __init__(self):
-        self.nodeCount = 0
-        self.head = Node(None)
-        self.tail = Node(None)
-        self.head.prev = None
-        self.head.next = self.tail
-        self.tail.prev = self.head
-        self.tail.next = None
-
-
-    def __repr__(self):
-        if self.nodeCount == 0:
-            return 'LinkedList: empty'
-
-        s = ''
-        curr = self.head
-        while curr.next.next:
-            curr = curr.next
-            s += repr(curr.data)
-            if curr.next.next is not None:
-                s += ' -> '
-        return s
-
-
-    def getLength(self):
-        return self.nodeCount
-
-
-    def traverse(self):
-        result = []
-        curr = self.head
-        while curr.next.next:
-            curr = curr.next
-            result.append(curr.data)
-        return result
-
-
-    def reverse(self):
-        result = []
-        curr = self.tail
-        while curr.prev.prev:
-            curr = curr.prev
-            result.append(curr.data)
-        return result
-
-
-    def getAt(self, pos):
-        if pos < 0 or pos > self.nodeCount:
-            return None
-
-        if pos > self.nodeCount // 2:
-            i = 0
-            curr = self.tail
-            while i < self.nodeCount - pos + 1:
-                curr = curr.prev
-                i += 1
-        else:
-            i = 0
-            curr = self.head
-            while i < pos:
-                curr = curr.next
-                i += 1
-
-        return curr
-
-
-    def insertAfter(self, prev, newNode):
-        next = prev.next
-        newNode.prev = prev
-        newNode.next = next
-        prev.next = newNode
-        next.prev = newNode
-        self.nodeCount += 1
-        return True
-
-
-    def insertAt(self, pos, newNode):
-        if pos < 1 or pos > self.nodeCount + 1:
-            return False
-
-        prev = self.getAt(pos - 1)
-        return self.insertAfter(prev, newNode)
-
-
-    def popAfter(self, prev):
-        curr = prev.next
-        next = curr.next
-        prev.next = next
-        next.prev = prev
-        self.nodeCount -= 1
-        return curr.data
-
-
-    def popAt(self, pos):
-        if pos < 1 or pos > self.nodeCount:
-            return None
-
-        prev = self.getAt(pos - 1)
-        return self.popAfter(prev)
-
-
-    def concat(self, L):
-        self.tail.prev.next = L.head.next
-        L.head.next.prev = self.tail.prev
-        self.tail = L.tail
-
-        self.nodeCount += L.nodeCount
-
-
-class PriorityQueue:
-
-    def __init__(self):
-        self.queue = DoublyLinkedList()
-
-
-    def size(self):
-        return self.queue.getLength()
-
-    def isEmpty(self):
-        return self.size() == 0
-
-    def enqueue(self, x):
-        newNode = Node(x)
-        curr = self.queue.head #어디서부터 시작
-        
-        while curr.next.data != None and curr.next.data > x: #끝을 만나지 않고 우선순위를 만족할때까지
-            curr = curr.next
-        self.queue.insertAfter(curr, newNode) #어느위치에
-        
-    def dequeue(self):
-        return self.queue.popAt(self.queue.getLength())
+    def pop(self):
+        return self.data.pop()
 
     def peek(self):
-        return self.queue.getAt(self.queue.getLength()).data
+        return self.data[-1]
 
 
-def solution(x):
-    return 0
+def splitTokens(exprStr):
+    tokens = []
+    val = 0
+    valProcessing = False
+    for c in exprStr:
+        if c == ' ':
+            continue
+        if c in '0123456789':
+            val = val * 10 + int(c)
+            valProcessing = True
+        else:
+            if valProcessing:
+                tokens.append(val)
+                val = 0
+            valProcessing = False
+            tokens.append(c)
+    if valProcessing:
+        tokens.append(val)
+
+    return tokens
+
+
+def infixToPostfix(tokenList): #리스트 리턴 
+    prec = {
+        '*': 3,
+        '/': 3,
+        '+': 2,
+        '-': 2,
+        '(': 1,
+    }
+
+    opStack = ArrayStack()
+    postfixList = []
+    
+    for c in tokenList:
+        if type(c) is int:
+            postfixList.append(c)
+        
+        elif c=='(':
+            opStack.push(c)
+        
+        elif c==')':
+            while not opStack.peek()=='(':
+                postfixList.append(opStack.pop())
+            opStack.pop()
+        
+        else:
+            if opStack.isEmpty():
+                opStack.push(c)
+                
+            else:
+                while opStack.isEmpty()==False and prec[c] <= prec[opStack.peek()]:
+                    postfixList.append(opStack.pop())
+                opStack.push(c)
+                
+    
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+
+    return postfixList
+
+
+def postfixEval(tokenList): #연산
+    
+    opStack = ArrayStack()
+    
+    for j in tokenList:
+        if type(j) is int: #피연산자는 push
+            opStack.push(j)
+            
+        #연산자는 앞에 두 개 pop, 계산하고 push 
+        elif j == '+':
+            num2=opStack.pop()
+            num1=opStack.pop()
+            opStack.push(num1+num2)
+        
+        elif j == '-':
+            num2=opStack.pop()
+            num1=opStack.pop()
+            opStack.push(num1-num2)
+            
+            
+        elif j == '*':
+            num2=opStack.pop()
+            num1=opStack.pop()
+            opStack.push(num1*num2)
+            
+            
+        else:
+            num2=opStack.pop()
+            num1=opStack.pop()
+            opStack.push(num1/num2)
+            
+            
+    #마지막 원소일 때 pop 
+    answer=opStack.pop()    
+    
+    return answer
+    
+    
+
+
+def solution(expr):
+    tokens = splitTokens(expr)
+    postfix = infixToPostfix(tokens)
+    val = postfixEval(postfix)
+    return val

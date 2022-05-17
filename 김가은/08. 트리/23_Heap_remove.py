@@ -2,7 +2,7 @@
 
 class MaxHeap:
     def __init__(self):
-        self.data = [None]
+        self.data = [None] # len(self.data) == 1
 
 
     def remove(self): # 가장 큰 값 = 루트노드 값 = self.data[1] 를 삭제 후 반환
@@ -16,21 +16,18 @@ class MaxHeap:
 
 
     def maxHeapify(self, i):
-        # 왼쪽 자식 (left child) 의 인덱스를 계산합니다.
-        left = 2 * i
-        # 오른쪽 자식 (right child) 의 인덱스를 계산합니다.
-        right = 2 * i + 1
+        left = 2 * i # 왼쪽 자식 인덱스
+        right = 2 * i + 1 # 오른쪽 자식 인덱스
+
         larger = i
-        # 왼쪽 자식이 존재하는지, 그리고 왼쪽 자식의 (키) 값이 (무엇보다?) 더 큰지를 판단합니다.
-        if (len(self.data) - 1) >= left and self.data[left] > self.data[larger]:
-            # 조건이 만족하는 경우, larger 는 왼쪽 자식의 인덱스를 가집니다.
+        # "len(self.data) - 1" = 실제 원소 개수. index 0에 None값을 넣었기 때문에 1 빼줘야 함.
+		if left <= (len(self.data) - 1) and self.data[left] > self.data[larger]:
             larger = left
-        # 오른쪽 자식이 존재하는지, 그리고 오른쪽 자식의 (키) 값이 (무엇보다?) 더 큰지를 판단합니다.
-        if (len(self.data) - 1) >= right and self.data[right] > self.data[larger]:
-            # 조건이 만족하는 경우, larger 는 오른쪽 자식의 인덱스를 가집니다.
+        if right <= (len(self.data) - 1) and self.data[right] > self.data[larger]:
             larger = right
-        if larger != i:
-            # 현재 노드 (인덱스 i) 와 최댓값 노드 (왼쪽 아니면 오른쪽 자식) 를 교체합니다.
+        
+		if larger != i: # 비교 후 갱신이 발생했다면
+            # 현재 노드 (인덱스 i) 와 최댓값 노드 (왼쪽과 오른쪽 자식 중 큰거) 를 교체합니다.
             self.data[i], self.data[larger] = self.data[larger], self.data[i]
             # 재귀적 호출을 이용하여 최대 힙의 성질을 만족할 때까지 트리를 정리합니다.
             self.maxHeapify(larger)
